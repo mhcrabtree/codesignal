@@ -25,9 +25,9 @@ func data() []m.DataIntArrayBool {
 	}
 }
 
-func TestCheckPalindrome(t *testing.T) {
+func TestAlmostIncreasingSequence(t *testing.T) {
 	for _, v := range data() {
-		output := CheckPalindrome(v.Input)
+		output := AlmostIncreasingSequence(v.Input)
 		if !v.Assert(&output) {
 			f, _ := json.Marshal(v)
 			t.Error(string(f))
@@ -35,11 +35,11 @@ func TestCheckPalindrome(t *testing.T) {
 	}
 }
 
-func BenchmarkCheckPalendrome(b *testing.B) {
+func BenchmarkAlmostIncreasingSequence(b *testing.B) {
 	inputStrings := data()
 	size := len(inputStrings)
 	for i := 0; i < b.N; i++ {
 		index := i % size
-		CheckPalindrome(inputStrings[index].Input)
+		AlmostIncreasingSequence(inputStrings[index].Input)
 	}
 }
