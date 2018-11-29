@@ -5,9 +5,28 @@ import (
 )
 
 // Solution given an array A of N integers, returns the smallest positive integer (greater than 0) that does not occur in A
-func Solution(A []int) int {
-	sort.Ints(A) // the most expensive part of this entire process
+func Solution(tempA []int) int {
+	sort.Ints(tempA) // the most expensive part of this entire process
 
+	// clean the list (anything zero or less is invalid) - could probably use a slice here
+	var A []int
+	for _, v := range tempA {
+		if v > 0 {
+			A = append(A, v)
+		}
+	}
+
+	// empty set case
+	if len(A) == 0 {
+		return 1
+	}
+
+	// quick return if the first value is 2 or greater
+	if A[0] > 1 {
+		return 1
+	}
+
+	// now that the edge cases are out of the way let's go through the actual algo
 	length := len(A)
 	answer := A[length-1] + 1 // prime the answer, regardless if it's the final answer
 
@@ -21,7 +40,7 @@ func Solution(A []int) int {
 		// check that the current index is not the same value as the previous item and that it increments by one
 		// the first value is the final answer so end quickly here
 		if A[i] != A[i-1]+1 && A[i] != A[i-1] {
-			answer = A[i] - 1 // new answer
+			answer = A[i-1] + 1 // new answer
 			return answer
 		}
 	}

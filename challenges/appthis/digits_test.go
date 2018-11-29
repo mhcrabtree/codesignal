@@ -19,6 +19,9 @@ func data() []m.DataIntArrayInt {
 		m.DataIntArrayInt{Input: []int{0, 0}, Output: 0},
 		m.DataIntArrayInt{Input: []int{0}, Output: 0},
 		m.DataIntArrayInt{Input: []int{3}, Output: 3},
+		m.DataIntArrayInt{Input: []int{9, 4, 2, 7, 9, 0}, Output: 1912},
+		m.DataIntArrayInt{Input: []int{3, 2, 1, 3, 2, 1, 3, 2, 1}, Output: 36432},
+		m.DataIntArrayInt{Input: []int{9, 4, 2, 7, 9, 0, 1}, Output: 10661},
 	}
 }
 
